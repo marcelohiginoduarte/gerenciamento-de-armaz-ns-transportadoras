@@ -3,7 +3,7 @@ from .models import Produto
 
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'sku', 'descricao')
-    list_display_links = ('nome',)
+    list_display = ('NF', 'fornecedor', 'cidade')
+    list_display_links = ('NF',)
 
 admin.site.register(Produto, ProdutoAdmin)      

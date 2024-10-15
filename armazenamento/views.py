@@ -8,7 +8,7 @@ def home(request):
 
 def lista_produtos(request):
     produtos = Produto.objects.all()
-    return render(request, 'estoqueproduto.html', {'produtos':produtos})
+    return render(request, 'Produto_estoque.html', {'produtos':produtos})
 
 def Castrar_produtos(request):
 
@@ -25,5 +25,5 @@ def Castrar_produtos(request):
         erro = request.GET.get('erro')
         texto = request.GET.get('texto')
 
-    return render(request, 'registrarproduto.html', {'form':form, 'erro':erro, 'texto':texto})
+    return render(request, 'Produto_criar.html', {'form':form, 'erro':erro, 'texto':texto})
 

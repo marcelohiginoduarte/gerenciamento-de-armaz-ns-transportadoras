@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block material %}
+<h3> Lista de Produtos</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">NF</th>
+            <th scope="col">fornecedor</th>
+            <th scope="col">cliente</th>
+            <th scope="col">cidade</th>
+            <th scope="col">quantidade_total</th>
+            <th scope="col">data_criacao</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Remover</th>
+        </tr>
+    </thead>
+    {% for produto in produtos %}
+        <tr>
+            <td><a href="#">{{produto.NF}}</a></td>
+            <td>{{produto.fornecedor}}</td>
+            <td>{{produto.cliente}}</td>
+            <td>{{ produto.cidade}}</td>
+            <td><a href="#">Editar</a></td>
+            <td><a href="#">Remover</a></td>
+        </tr>
+    {% endfor %}
+    <a href="#">Registrar Movimentação</a>
+</table>
+{% endblock %}
