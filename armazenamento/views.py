@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Produto
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Produto, EspacoArmazenamento, RegistroEntrega
 from .forms import ProdutoForms
+from django.utils import timezone
 
 
 def home(request):
@@ -27,3 +28,30 @@ def Castrar_produtos(request):
 
     return render(request, 'Produto_criar.html', {'form':form, 'erro':erro, 'texto':texto})
 
+def lista_espacos(request):
+    espacos = EspacoArmazenamento.objects.all()
+    return render(request, 'armazenamento_espaco.html', {'espacos': espacos})
+
+
+def saida_para_entrega(request, espaco_id):
+    espaco = get_object_or_404(EspacoArmazenamento, id=espaco_id)
+    
+    if espaco.produto:
+        # Cria o registro da saída sem usar numero_estoque
+        RegistroEntrega.objects.create(
+            produto=espaco.produto,
+            espaco=espaco,
+            data_entrega=timezone.now(),
+        )
+        
+        # Limpa o produto do espaço e o número
+        espaco.produto = None
+        espaco.numero = None  # Limpa o número ou redefine conforme necessário
+        espaco.save()
+        
+        return redirect('pagina_de_confirmacao')  # Redireciona para uma página de confirmação
+    
+    return HttpResponse("O espaço já está vago.")
+
+def sua_view_de_confirmacao(request):
+    return render(request, 'nome_do_template_de_confirmacao.html')

@@ -29,9 +29,6 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        {% block 'mateiral' %}
-
-        {% endblock %}
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -86,10 +83,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Itens na Espedição</h6>
-                        <a class="collapse-item" href="utilities-color.html">Localização</a>
-                        <a class="collapse-item" href="utilities-border.html">Dados</a>
-                        <a class="collapse-item" href="utilities-animation.html">Relatorio</a>
-                        <a class="collapse-item" href="utilities-other.html">Fiscalização</a>
+                        <a class="collapse-item" href="{% url 'espaçoarmazenamento' %}">Gestão Armazem</a>
+                        <a class="collapse-item" href="#">Dados</a>
+                        <a class="collapse-item" href="#">Relatorio</a>
+                        <a class="collapse-item" href="#">Fiscalização</a>
                     </div>
                 </div>
             </li>
@@ -167,19 +164,6 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

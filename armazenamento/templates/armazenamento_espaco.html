@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block material %}
+<style>
+    .ocupado {
+        background-color: #f8d7da; /* vermelho claro */
+    }
+    .vago {
+        background-color: #d4edda; /* verde claro */
+    }
+</style>
+
+<h3>Lista de Espaços de Armazenamento</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Número do Espaço</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Status</th>
+            <th scope="col">Atualização</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for espaco in espacos %}
+        <tr class="{% if espaco.produto %}ocupado{% else %}vago{% endif %}">
+            <td>{{ espaco.numero }}</td>
+            <td>
+                {% if espaco.produto %}
+                <a href="#">{{ espaco.produto }}</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if espaco.produto %}
+                    Ocupado
+                {% else %}
+                    Vago
+                {% endif %}
+            </td>
+            <td>
+                <form method="POST" action="{% url 'saida_para_entrega' espaco.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Sair para Entrega</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

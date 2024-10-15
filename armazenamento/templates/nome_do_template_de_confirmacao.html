@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block material %}
+    <h3>Ola! Bom dia!</h3>
+    <div class="container">
+        <h1>Entrega Concluída!</h1>
+        <p>Seu produto foi entregue para o transporte</p>
+        <p>Obrigado por utilizar nossos serviços!</p>
+
+        <a href="{% url 'espaçoarmazenamento' %}">Voltar para a página inicial</a>
+    </div>
+{% endblock %}

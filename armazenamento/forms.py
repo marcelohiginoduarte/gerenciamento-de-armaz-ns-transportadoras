@@ -5,7 +5,7 @@ from .models import MovimentacaoEstoque, Produto
 class ProdutoForms(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['NF', 'fornecedor', 'cidade',]
+        fields = ['NF', 'fornecedor', 'cliente','cidade', 'quantidade_total']
 
 
 

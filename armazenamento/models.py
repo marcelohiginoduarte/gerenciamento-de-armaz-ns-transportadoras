@@ -1,10 +1,11 @@
 from django.db import models
+from django.utils import timezone
 
 class Produto(models.Model):
     NF = models.CharField(max_length=100)
     fornecedor = models.CharField(max_length=50, unique=True)
-    cidade = models.CharField(max_length=50, unique=True)
-    cliente = models.TextField(blank=True, null=True)
+    cidade = models.CharField(max_length=50, unique=False)
+    cliente = models.CharField(max_length=50, blank=True, null=True)
     quantidade_total = models.PositiveIntegerField(default=0)
     data_criacao = models.DateTimeField(auto_now_add=True)
     
@@ -63,6 +64,15 @@ class MovimentacaoEstoque(models.Model):
 class EspacoArmazenamento(models.Model):
     numero = models.PositiveBigIntegerField(unique=True)
     produto = models.ForeignKey(Produto, null=True, blank=True, on_delete=models.SET_NULL)
+    vaga = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Espaço {self.numero} - {"Ocupado" if self.produto else "Vago"}'
+
+class RegistroEntrega(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    espaco = models.ForeignKey(EspacoArmazenamento, on_delete=models.CASCADE)
+    data_entrega = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return f'Registro de {self.produto.nome} - {self.espaco.numero} - {self.data_entrega}'

@@ -2,8 +2,7 @@
 
 
 {% block material %}
-<h1>Criar Produto</h1>
-
+    <h3>Criar Produto</h3>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

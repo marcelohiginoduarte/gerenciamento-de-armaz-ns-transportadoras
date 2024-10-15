@@ -9,7 +9,7 @@
             <th scope="col">fornecedor</th>
             <th scope="col">cliente</th>
             <th scope="col">cidade</th>
-            <th scope="col">quantidade_total</th>
+            <th scope="col">quantidade total</th>
             <th scope="col">data_criacao</th>
             <th scope="col">Editar</th>
             <th scope="col">Remover</th>
@@ -21,10 +21,13 @@
             <td>{{produto.fornecedor}}</td>
             <td>{{produto.cliente}}</td>
             <td>{{ produto.cidade}}</td>
+            <td>{{ produto.quantidade_total}}</td>
+            <td>{{ produto.data_criacao}}</td>
+            <td>{{ produto.data_criacao}}</td>
             <td><a href="#">Editar</a></td>
             <td><a href="#">Remover</a></td>
         </tr>
     {% endfor %}
-    <a href="#">Registrar Movimentação</a>
+    <!--<a href="#">Registrar Movimentação</a>-->
 </table>
 {% endblock %}
