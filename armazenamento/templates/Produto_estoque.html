@@ -24,7 +24,7 @@
             <td>{{ produto.quantidade_total}}</td>
             <td>{{ produto.data_criacao}}</td>
             <td>{{ produto.data_criacao}}</td>
-            <td><a href="#">Editar</a></td>
+            <td><a href="{% url 'editarproduto' produto.id %}">Editar</a></td>
             <td><a href="#">Remover</a></td>
         </tr>
     {% endfor %}

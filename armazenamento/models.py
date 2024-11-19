@@ -64,10 +64,10 @@ class MovimentacaoEstoque(models.Model):
 class EspacoArmazenamento(models.Model):
     numero = models.PositiveBigIntegerField(unique=True)
     produto = models.ForeignKey(Produto, null=True, blank=True, on_delete=models.SET_NULL)
-    vaga = models.BooleanField(default=False)
+    vaga = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'Espaço {self.numero} - {"Ocupado" if self.produto else "Vago"}'
+        return f'Espaço {self.numero} - {"Ocupado" if not self.vaga else "Vago"}'
 
 class RegistroEntrega(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)

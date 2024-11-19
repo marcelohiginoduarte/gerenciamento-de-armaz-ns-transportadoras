@@ -1,0 +1,14 @@
+
+
+
+<form action="{% url 'incluir_produto' espaco.id produto.id %}" method="post">
+    {% csrf_token %}
+    <label for="produto">Selecione o produto:</label>
+    <select name="produto_id">
+        {% for produto in produtos %}
+        <option value="{{ produto.id }}">{{ produto.nome }}</option>
+        {% endfor %}
+    </select>
+    
+    <input type="submit" value="Incluir Produto no Espaço">
+</form>

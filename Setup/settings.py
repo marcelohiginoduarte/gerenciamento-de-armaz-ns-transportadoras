@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5uf4knse9^1e=71cl&1%^!yic2cp9yn7qw+!a-ze(#+7(aq5=1'
-
+API_SECRET_KEY = 'minhaapi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
