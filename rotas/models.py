@@ -15,37 +15,48 @@ class rota(models.Model):
 
     def __str__(self):
         return f"{self.origem} → {self.destino}"
-    
+
     def calcular_rota(self):
-        origem_coords = client.pelias_search(self.origem)['features'][0]['geometry']['coordinates']
-        destino_coords = client.pelias_search(self.destino)['features'][0]['geometry']['coordinates']
+    
+        origem_resposta = client.pelias_search(self.origem)
+        destino_resposta = client.pelias_search(self.destino)
 
-        print("Origem:", origem_coords)
-        print("Destino:", destino_coords)
-
-        if not origem_coords['features'] or not destino_coords['features']:
+        
+        if not origem_resposta['features'] or not destino_resposta['features']:
             print("Erro: Dados de origem ou destino não encontrados")
             return
 
+        
+        origem_coords = origem_resposta['features'][0]['geometry']['coordinates']
+        destino_coords = destino_resposta['features'][0]['geometry']['coordinates']
 
+        
+        print("Origem:", origem_coords)
+        print("Destino:", destino_coords)
+
+        
         rota = client.directions(
             coordinates=[origem_coords, destino_coords],
             profile='driving-car',
             format='geojson'
         )
 
-        print("Rota:", rota) 
+        
+        print("Rota:", rota)
 
-        distancia = rota['features'][0]['properties']['segments'][0]['distance'] / 1000 
+        
+        distancia = rota['features'][0]['properties']['segments'][0]['distance'] / 1000  # em km
         tempo_estimado_segundos = rota['features'][0]['properties']['segments'][0]['duration']
         tempo_estimado = str(tempo_estimado_segundos // 3600) + 'h ' + str((tempo_estimado_segundos % 3600) // 60) + 'm'
 
+        
         if distancia is None or distancia == 0:
             raise ValueError("A distância não pode ser nula ou zero")
+
         
         self.distancia = distancia
         self.tempo_estimado = tempo_estimado
-        self.custo_estimado = self.distancia * 2.5  
+        self.custo_estimado = self.distancia * 2.5
         self.save()
 
 

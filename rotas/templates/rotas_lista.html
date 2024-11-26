@@ -15,12 +15,14 @@
     </thead>
     <tbody>
         {% for rota in todas_rotas %}
-            <td>{{ rota.produto }}</td>
-            <td>{{ rota.origem }}</td>
-            <td>{{ rota.destino }}</td>
-            <td>{{ rota.distancia }}</td>
-            <td>{{ rota.tempo_estimado }}</td>
-            <td>{{ rota.custo_estimado }}</td>
+            <tr>
+                <td>{{ rota.produto }}</td>
+                <td>{{ rota.origem }}</td>
+                <td>{{ rota.destino }}</td>
+                <td>{{ rota.distancia }}</td>
+                <td>{{ rota.tempo_estimado }}</td>
+                <td>{{ rota.custo_estimado }}</td>
+            </tr>
         {% endfor %}
     </tbody>
 </table>
