@@ -13,6 +13,7 @@ from armazenamento.views import (
     criar_espaco_armazenamento,
     CadastrarProdutoAPI,
 )
+from rotas.views import cadastrar_rota, ver_rotas
 
 
 urlpatterns = [
@@ -37,4 +38,6 @@ urlpatterns = [
         incluir_produto,
         name="incluir_produto",
     ),
+    path("rotas/cadastrar_rota", cadastrar_rota, name='cadastrarrotas'),
+    path("rotas/todasrotas", ver_rotas, name='vertodasrotas'),
 ]

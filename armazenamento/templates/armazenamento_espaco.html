@@ -33,6 +33,7 @@
             <th scope="col">Número do Espaço</th>
             <th scope="col">Produto</th>
             <th scope="col">Status</th>
+            <th scope="col">Volume</th>
             <th scope="col">Entrada de Produto</th>
             <th scope="col">Saida de Produto</th>
         </tr>
@@ -55,6 +56,9 @@
                 {% else %}
                     Vago
                 {% endif %}
+            </td>
+            <td>
+                <samp>{{ espaco.produto.quantidade_total }}</samp>
             </td>
             <td>
                 <a href="{% url 'entrada_espaco_armazenamento' espaco.id %}">Entrada de produtos</a>                

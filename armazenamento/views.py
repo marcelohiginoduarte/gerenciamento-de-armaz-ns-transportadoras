@@ -126,9 +126,8 @@ def entrada_produto_armazem(request, espaco_id):
     )
 
 def lista_espacos(request):
-    espacos = EspacoArmazenamento.objects.all().order_by('numero')
-    produtos = Produto.objects.all()
-    return render(request, 'armazenamento_espaco.html', {'espacos': espacos, 'produtos': produtos})
+    espacos = EspacoArmazenamento.objects.select_related('produto').all().order_by('numero')
+    return render(request, 'armazenamento_espaco.html', {'espacos': espacos})
 
 
 def saida_para_entrega(request, espaco_id):

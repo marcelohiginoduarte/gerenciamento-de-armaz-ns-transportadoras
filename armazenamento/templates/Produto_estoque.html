@@ -10,6 +10,8 @@
             <th scope="col">cliente</th>
             <th scope="col">cidade</th>
             <th scope="col">quantidade total</th>
+            <th scope="col">Origem</th>
+            <th scope="col">Destino</th>
             <th scope="col">data_criacao</th>
             <th scope="col">Editar</th>
             <th scope="col">Remover</th>
@@ -22,6 +24,8 @@
             <td>{{produto.cliente}}</td>
             <td>{{ produto.cidade}}</td>
             <td>{{ produto.quantidade_total}}</td>
+            <td>{{produto.origem}}</td>
+            <td>{{ produto.destino}}</td>
             <td>{{ produto.data_criacao}}</td>
             <td>{{ produto.data_criacao}}</td>
             <td><a href="{% url 'editarproduto' produto.id %}">Editar</a></td>

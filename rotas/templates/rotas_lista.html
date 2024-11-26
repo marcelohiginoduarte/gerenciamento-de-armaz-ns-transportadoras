@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block material %}
+<h3>Todas as rotas</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">origem</th>
+            <th scope="col">destino</th>
+            <th scope="col">distancia</th>
+            <th scope="col">Tempo Estimado</th>
+            <th scope="col">Custo Estimado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rota in todas_rotas %}
+            <td>{{ rota.produto }}</td>
+            <td>{{ rota.origem }}</td>
+            <td>{{ rota.destino }}</td>
+            <td>{{ rota.distancia }}</td>
+            <td>{{ rota.tempo_estimado }}</td>
+            <td>{{ rota.custo_estimado }}</td>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
