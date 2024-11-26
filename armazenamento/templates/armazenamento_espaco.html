@@ -33,7 +33,7 @@
             <th scope="col">Número do Espaço</th>
             <th scope="col">Produto</th>
             <th scope="col">Status</th>
-            <th scope="col">Entrada  de Produto</th>
+            <th scope="col">Entrada de Produto</th>
             <th scope="col">Saida de Produto</th>
         </tr>
     </thead>
@@ -57,20 +57,10 @@
                 {% endif %}
             </td>
             <td>
-                <form action="{% url 'espaçoarmazenamento' %}" method="post" id="lista-espacos-form">
-                    {% csrf_token %}
-                    <label for="produto">Selecione o produto:</label>
-                    <select name="produto_id" id="produto" required>
-                        <option value="">-- Escolha um produto --</option>
-                        {% for produto in produtos %}
-                        <option value="{{ produto.id }}">{{ produto.nome }}</option>
-                        {% endfor %}
-                    </select>
-                
-                    <input type="submit" value="Incluir Produto no Espaço">
-                </form>             
+                <a href="{% url 'entrada_espaco_armazenamento' espaco.id %}">Entrada de produtos</a>                
             </td>
             <td>
+                
                 <form method="POST" action="{% url 'saida_para_entrega' espaco.id %}">
                     {% csrf_token %}
                     <button type="submit">Sair para Entrega</button>

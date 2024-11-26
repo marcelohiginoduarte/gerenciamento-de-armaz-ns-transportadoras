@@ -1,15 +1,25 @@
 from django import forms
-from .models import MovimentacaoEstoque, Produto
+from .models import MovimentacaoEstoque, Produto, EspacoArmazenamento
 
 
 class ProdutoForms(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['NF', 'fornecedor', 'cliente','cidade', 'quantidade_total']
-
+        fields = ["NF", "fornecedor", "cliente", "cidade", "quantidade_total"]
 
 
 class MovimentacaoEstoqueForm(forms.ModelForm):
     class Meta:
         model = MovimentacaoEstoque
-        fields = ['produto', 'local', 'tipo', 'quantidade', 'observacao']
+        fields = ["produto", "local", "tipo", "quantidade", "observacao"]
+
+
+class EspacoArmazenamentoForm(forms.ModelForm):
+    class Meta:
+        model = EspacoArmazenamento
+        fields = ["numero", "produto", "vaga"]
+
+class SalvarProdutoNoEspacaoForm(forms.ModelForm):
+    class Meta:
+        model = EspacoArmazenamento
+        fields = ['produto']
