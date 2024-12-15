@@ -60,13 +60,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa-sharp fa-regular fa-table-tree"></i>
-                    <span>Produtos</span>
+                    <span>Cargas</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestão de Produtos</h6>
-                        <a class="collapse-item" href="{% url 'cadastrarproduto' %}">Criar Produtos</a>
-                        <a class="collapse-item" href="{% url 'listarprodutos' %}">Todos os Produtos</a>
+                        <h6 class="collapse-header">Gestão de Cargas</h6>
+                        <a class="collapse-item" href="{% url 'cadastrarproduto' %}">Criar Carga</a>
+                        <a class="collapse-item" href="{% url 'listarprodutos' %}">Todos os Cargas</a>
                     </div>
                 </div>
             </li>
@@ -83,7 +83,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Itens na Espedição</h6>
                         <a class="collapse-item" href="{% url 'espaçoarmazenamento' %}">Gestão Armazem</a>
-                        <a class="collapse-item" href="#">Dados</a>
+                        <a class="collapse-item" href="{% url 'criarespacoarmazenamento' %}">Criar Espaço Armazenamento</a>
                         <a class="collapse-item" href="#">Relatorio</a>
                         <a class="collapse-item" href="#">Fiscalização</a>
                     </div>

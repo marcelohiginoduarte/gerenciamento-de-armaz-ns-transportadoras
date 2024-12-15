@@ -3,6 +3,12 @@ from django.utils import timezone
 
 
 class Produto(models.Model):
+    status_carga = [('aguardando','aguardando Transpor'),
+                    ('em_transito','Em Transito'),
+                    ('entregue','Entregue'),
+                    ]
+
+
     NF = models.CharField(max_length=100)
     fornecedor = models.CharField(max_length=50, unique=True)
     cidade = models.CharField(max_length=50, unique=False)
@@ -10,6 +16,7 @@ class Produto(models.Model):
     origem = models.CharField(max_length=1362, blank=True, null=True)
     destino = models.CharField(max_length=1362, blank=True, null=True)
     quantidade_total = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=25, choices=status_carga, blank=True, null=True, default='aguardando')
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

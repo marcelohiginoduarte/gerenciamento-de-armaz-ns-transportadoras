@@ -11,6 +11,7 @@ from armazenamento.views import (
     incluir_produto,
     editar_produto,
     criar_espaco_armazenamento,
+    exibir_quantidade_produto,
     CadastrarProdutoAPI,
 )
 from rotas.views import cadastrar_rota, ver_rotas
@@ -30,9 +31,11 @@ urlpatterns = [
         saida_para_entrega,
         name="saida_para_entrega",
     ),
+    path('armazenamento/criarespaco', criar_espaco_armazenamento, name='criarespacoarmazenamento'),
     path(
         "pagina-de-confirmacao/", sua_view_de_confirmacao, name="pagina_de_confirmacao"
     ),
+    path('quantidadeproduto', exibir_quantidade_produto, name='quantidadeproduto'),
     path(
         "incluir_produto/<int:espaco_id>/<int:produto_id>/",
         incluir_produto,

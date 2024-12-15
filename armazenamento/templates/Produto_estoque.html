@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block material %}
-<h3> Lista de Produtos</h3>
+<h3> Lista de Cargas</h3>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -12,6 +12,7 @@
             <th scope="col">quantidade total</th>
             <th scope="col">Origem</th>
             <th scope="col">Destino</th>
+            <th scope="col">Status</th>
             <th scope="col">data_criacao</th>
             <th scope="col">Editar</th>
             <th scope="col">Remover</th>
@@ -26,7 +27,7 @@
             <td>{{ produto.quantidade_total}}</td>
             <td>{{produto.origem}}</td>
             <td>{{ produto.destino}}</td>
-            <td>{{ produto.data_criacao}}</td>
+            <td>{{ produto.status}}</td>
             <td>{{ produto.data_criacao}}</td>
             <td><a href="{% url 'editarproduto' produto.id %}">Editar</a></td>
             <td><a href="#">Remover</a></td>

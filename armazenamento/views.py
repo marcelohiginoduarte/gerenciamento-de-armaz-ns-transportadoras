@@ -12,12 +12,26 @@ from datetime import datetime
 
 
 def home(request):
-    return render(request, "home.html")
+    quantidade_produto = Produto.objects.count()
+    total_espacos = EspacoArmazenamento.objects.count()
+    print(total_espacos)
+    for espaco in EspacoArmazenamento.objects.all():
+        print(f"Espaço {espaco.numero}: {'Ocupado' if not espaco.vaga else 'Vago'}")
+    espacos_ocupados = EspacoArmazenamento.objects.filter(vaga=False).count()
+    if total_espacos > 0:
+        percentual_ocupado = ( espacos_ocupados / total_espacos) * 100
+    else:
+        percentual_ocupado = 0
+    return render(request, "home.html", {'quantidade_produto':quantidade_produto, 'percentual_ocupado': round(percentual_ocupado, 2)})
 
 
 def lista_produtos(request):
     produtos = Produto.objects.all()
     return render(request, "Produto_estoque.html", {"produtos": produtos})
+
+def exibir_quantidade_produto(request):
+    quantidade_produto = Produto.objects.count()
+    return render(request, 'contar.html', {'quantidade_produto':quantidade_produto})
 
 
 def editar_produto(request, produto_id):
