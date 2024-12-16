@@ -77,10 +77,14 @@ class EspacoArmazenamento(models.Model):
 
     def __str__(self):
         return f'Espaço {self.numero} - {"Ocupado" if not self.vaga else "Vago"}'
-    
+
+    def save(self, *args, **kwargs):
+        self.vaga = self.produto is None
+        super().save(*args, **kwargs)
+
     def incluir_produto(self, produto):
         if not self.vaga:
-            raise ValueError("Esta vaga ja está ocupada")
+            raise ValueError("Esta vaga já está ocupada")
         self.produto = produto
         self.vaga = False
         self.save()
